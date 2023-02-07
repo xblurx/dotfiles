@@ -1,1 +1,1 @@
-# unix_config
+nvim config and whatnot
