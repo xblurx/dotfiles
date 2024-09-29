@@ -1,6 +1,6 @@
 local M = {}
 
-M.ui = { theme = "oxocarbon" }
+M.ui = { theme = "blossom_light" }
 
 M.base46 = {
   changed_themes = {
@@ -27,6 +27,16 @@ M.base46 = {
         green = "#ffffff",
       },
     },
+  },
+}
+
+M.mason = {
+  cmd = true,
+  pkgs = {
+    "tailwindcss-language-server",
+    "typescript-language-server",
+    "eslintd",
+    "prettierd",
   },
 }
 

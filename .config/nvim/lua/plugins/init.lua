@@ -86,15 +86,7 @@ return {
 
   {
     "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "rust-analyzer",
-        "tailwindcss-language-server",
-        "typescript-language-server",
-        "eslintd",
-        "prettierd",
-      },
-    },
+    opts = {},
   },
 
   {
