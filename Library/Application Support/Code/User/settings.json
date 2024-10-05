@@ -1,0 +1,81 @@
+{
+	"vim.insertModeKeyBindings": [
+		{
+			"before": ["z", "z"],
+			"after": ["<C-d>"]
+		},
+		{
+			"before": ["z", "z"],
+			"after": ["<C-d>"]
+		}
+	],
+	"editor.fontSize": 16,
+	"editor.rulers": [80],
+	"editor.suggest.showWords": false,
+	"editor.snippetSuggestions": "top",
+	"search.exclude": {
+		"**/node_modules": true,
+		"**/bower_components": true,
+		"**/coverage": true,
+		"**/dist": true,
+		"**/build": true,
+		"**/.build": true,
+		"**/.gh-pages": true
+	},
+	"explorer.confirmDragAndDrop": false,
+	"window.autoDetectColorScheme": true,
+	"workbench.preferredDarkColorTheme": "poimandres",
+	"workbench.preferredLightColorTheme": "Atom One Light",
+	"[makefile]": {
+		"editor.insertSpaces": false,
+		"editor.detectIndentation": true
+	},
+	"vim.autoindent": false,
+	"gitlens.hovers.currentLine.over": "line",
+	"extensions.ignoreRecommendations": true,
+	"editor.suggest.snippetsPreventQuickSuggestions": false,
+	"editor.tabSize": 2,
+	"diffEditor.renderSideBySide": false,
+	"editor.minimap.enabled": false,
+	"git.mergeEditor": true,
+	"prettier.requireConfig": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll": "explicit"
+	},
+	"workbench.colorTheme": "Atom One Light",
+	"workbench.localHistory.maxFileEntries": 20,
+	"typescript.preferences.importModuleSpecifier": "non-relative",
+	"editor.renderWhitespace": "none",
+	"window.commandCenter": false,
+	"window.title": "${activeRepositoryName}${separator}${activeRepositoryBranchName}${separator}${activeEditorShort}",
+	"yaml.schemas": {
+		"file:///Users/v.sharov/.vscode/extensions/docsmsft.docs-yaml-1.0.1/dist/toc.schema.json": "/toc\\.yml/i"
+	},
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"workbench.colorCustomizations": {
+    "editorGutter.modifiedBackground": "#b839b0", // Color for modified lines
+    "editorGutter.addedBackground": "#b839b0", // Color for modified lines
+	},
+	"[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+	"[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+	"terminal.integrated.env.osx": {},
+	"editor.stickyScroll.enabled": false,
+	"gitlens.codeLens.enabled": false,
+	"gitlens.statusBar.enabled": false,
+	"gitlens.mode.active": "review",
+	"editor.formatOnSave": true,
+	"redhat.telemetry.enabled": false,
+	"diffEditor.ignoreTrimWhitespace": false,
+	"[rust]": {
+		"editor.defaultFormatter": "rust-lang.rust-analyzer"
+	},
+	"[markdown]": {
+    "editor.formatOnSave": false,
+  },
+	"editor.inlayHints.enabled": "offUnlessPressed",
+	"terminal.integrated.fontSize": 12,
+	"scm.showHistoryGraph": false,
+	"scm.showIncomingChanges": "never",
+	"scm.showOutgoingChanges": "never",
+	"git.openRepositoryInParentFolders": "never"
+}
