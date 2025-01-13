@@ -1,0 +1,7 @@
+theme = dark:Oxocarbon,light:"Builtin Solarized Light"
+background-opacity = 0.9
+background-blur-radius = 10
+font-size = 16
+
+keybind = cmd+s>r=reload_config
+

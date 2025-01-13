@@ -1,5 +1,7 @@
 local M = {}
 
+M.ui = { theme = "oxocarbon" }
+
 M.base46 = {
   theme = "oxocarbon",
   theme_toggle = { "blossom_light", "oxocarbon" },
