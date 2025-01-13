@@ -1,9 +1,9 @@
 local cmp = require "cmp"
 
 local function set_theme(name)
-  local cur_theme = require("nvconfig").ui.theme
+  local cur_theme = require("nvconfig").base46.theme
   require("nvchad.utils").replace_word(cur_theme, name)
-  require("nvconfig").ui.theme = name
+  require("nvconfig").base46.theme = name
   require("base46").load_all_highlights()
 end
 
@@ -12,6 +12,21 @@ return {
     "stevearc/conform.nvim",
     event = "BufWritePre", -- uncomment for format on save
     opts = require "configs.conform",
+  },
+
+  {
+    "nvchad/ui",
+    config = function()
+      require "nvchad"
+    end,
+  },
+
+  {
+    "nvchad/base46",
+    lazy = true,
+    build = function()
+      require("base46").load_all_highlights()
+    end,
   },
 
   {
@@ -127,6 +142,7 @@ return {
       vim.g.rustfmt_autosave = 1
     end,
   },
+
   {
     event = "VeryLazy",
     "f-person/auto-dark-mode.nvim",
@@ -140,6 +156,7 @@ return {
       end,
     },
   },
+
   {
     lazy = false,
     "superDross/ticket.vim",

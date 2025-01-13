@@ -1,8 +1,8 @@
 local M = {}
 
-M.ui = { theme = "blossom_light" }
-
 M.base46 = {
+  theme = "blossom_light",
+  theme_toggle = { "blossom_light", "blossom_light" },
   changed_themes = {
     oxocarbon = {
       base_16 = {
@@ -30,13 +30,15 @@ M.base46 = {
   },
 }
 
-M.mason = {
-  cmd = true,
-  pkgs = {
-    "tailwindcss-language-server",
-    "typescript-language-server",
-    "eslintd",
-    "prettierd",
+M.ui = {
+  mason = {
+    cmd = true,
+    pkgs = {
+      "tailwindcss-language-server",
+      "typescript-language-server",
+      "eslint_d",
+      "prettierd",
+    },
   },
 }
 

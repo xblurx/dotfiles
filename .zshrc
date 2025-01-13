@@ -92,13 +92,6 @@ source $ZSH/oh-my-zsh.sh
 #   export EDITOR='mvim'
 # fi
 
-function cheat() {
-	curl cheat.sh/$1
-}
-
-function agg() {
-    ag -s -Q "$1" .
-}
 
 
 # Compilation flags
@@ -129,3 +122,5 @@ export AR=/opt/homebrew/opt/llvm/bin/llvm-ar
 
 export LC_ALL=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
+
+source "$HOME/.rye/env"

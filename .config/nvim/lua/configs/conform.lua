@@ -5,6 +5,7 @@ local options = {
     typescript = { "prettierd" },
     javascriptreact = { "prettierd" },
     typescriptreact = { "prettierd" },
+    python = { "black" },
   },
 
   format_on_save = {
