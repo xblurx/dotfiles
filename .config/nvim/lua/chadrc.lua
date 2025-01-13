@@ -1,8 +1,8 @@
 local M = {}
 
 M.base46 = {
-  theme = "blossom_light",
-  theme_toggle = { "blossom_light", "blossom_light" },
+  theme = "oxocarbon",
+  theme_toggle = { "blossom_light", "oxocarbon" },
   changed_themes = {
     oxocarbon = {
       base_16 = {
