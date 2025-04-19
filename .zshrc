@@ -123,4 +123,3 @@ export AR=/opt/homebrew/opt/llvm/bin/llvm-ar
 export LC_ALL=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 
-source "$HOME/.rye/env"

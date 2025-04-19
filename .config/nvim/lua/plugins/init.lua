@@ -1,10 +1,8 @@
-local cmp = require "cmp"
-
 local function set_theme(name)
-  local cur_theme = require("nvconfig").base46.theme
-  require("nvchad.utils").replace_word(cur_theme, name)
-  require("nvconfig").base46.theme = name
-  require("base46").load_all_highlights()
+  local old_theme = name == "everforest_light" and "oxocarbon" or "everforest_light"
+
+  require("nvchad.utils").replace_word('theme = "' .. old_theme, 'theme = "' .. name)
+  require("base64").load_all_highlights()
 end
 
 return {
@@ -50,16 +48,10 @@ return {
   },
 
   {
-    "mrcjkb/rustaceanvim",
-    version = "^5", -- Recommended
-    lazy = false, -- This plugin is already lazy
-  },
-
-  {
     "nvim-treesitter/nvim-treesitter",
     opts = function()
-      opts = require "nvchad.configs.treesitter"
-      opts.ensure_installed = {
+      local cfg = require "nvchad.configs.treesitter"
+      cfg.ensure_installed = {
         "vim",
         "lua",
         "css",
@@ -71,7 +63,7 @@ return {
         "typescript",
         "tsx",
       }
-      return opts
+      return cfg
     end,
   },
 
@@ -120,20 +112,50 @@ return {
       }
     end,
   },
-  --
-  -- {
-  --   "hrsh7th/nvim-cmp",
-  --   opts = function()
-  --     local M = require "nvchad.configs.cmp"
-  --     M.completion.completeopt = "menu,menuone,noselect"
-  --     M.mapping["<CR>"] = cmp.mapping.confirm {
-  --       behavior = cmp.ConfirmBehavior.Insert,
-  --       select = false,
-  --     }
-  --     table.insert(M.sources, {name = "crates"})
-  --     return M
-  --   end,
-  -- },
+
+  {
+    "hrsh7th/nvim-cmp",
+    opts = function(_, conf)
+      conf.completion = {
+        autocomplete = false,
+        completeopt = "menu,menuone,notebookSelector",
+      }
+
+      conf.window = {
+        completion = { autocomplete = false },
+      }
+
+      conf.buffer = {
+        completion = { autocomplete = false },
+        window = {
+          completion = { autocomplete = false },
+        },
+      }
+
+      -- require("cmp").setup {
+      --   completion = { autocomplete = false },
+      --   window = {
+      --     completion = { autocomplete = false },
+      --     documentation = {
+      --       border = border "CmpDocBorder",
+      --       winhighlight = "Normal:CmpDoc",
+      --     },
+      --   },
+      --   buffer = {
+      --     completion = { autocomplete = false },
+      --     window = {
+      --       completion = { autocomplete = false },
+      --       documentation = {
+      --         border = border "CmpDocBorder",
+      --         winhighlight = "Normal:CmpDoc",
+      --       },
+      --     },
+      --   },
+      -- }
+
+      return conf
+    end,
+  },
 
   {
     "rust-lang/rust.vim",
@@ -147,12 +169,14 @@ return {
     event = "VeryLazy",
     "f-person/auto-dark-mode.nvim",
     opts = {
-      update_interval = 1000,
+      update_interval = 5000,
       set_dark_mode = function()
+        -- require("base46").toggle_theme()
         set_theme "oxocarbon"
       end,
       set_light_mode = function()
-        set_theme "blossom_light"
+        -- require("base46").toggle_theme()
+        set_theme "everforest_light"
       end,
     },
   },

@@ -1,10 +1,10 @@
 local M = {}
 
-M.ui = { theme = "oxocarbon" }
+M.ui = { theme = "everforest_light" }
 
 M.base46 = {
-  theme = "oxocarbon",
-  theme_toggle = { "blossom_light", "oxocarbon" },
+  theme = "everforest_light",
+  theme_toggle = { "everforest_light", "oxocarbon" },
   changed_themes = {
     oxocarbon = {
       base_16 = {

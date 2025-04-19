@@ -12,6 +12,10 @@ nvlsp.on_attach = function(_, bufnr)
   vim.keymap.set("n", "<leader>dv", function()
     vim.diagnostic.open_float()
   end, opts)
+
+  vim.keymap.set("n", "K", function()
+    vim.lsp.buf.hover()
+  end, opts)
 end
 
 -- lsps with default config

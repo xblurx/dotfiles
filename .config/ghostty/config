@@ -1,8 +1,10 @@
 theme = dark:Oxocarbon,light:"Builtin Solarized Light"
 background-opacity = 0.9
 background-blur-radius = 10
+# background = "#e6dfdc"
 font-size = 18
 font-family = "IBM Plex"
+font-feature = -calt
 
 keybind = cmd+s>r=reload_config
 keybind = cmd+x=close_surface
