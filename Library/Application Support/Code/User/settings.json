@@ -24,14 +24,13 @@
 	},
 	"explorer.confirmDragAndDrop": false,
 	"window.autoDetectColorScheme": true,
-	"workbench.preferredDarkColorTheme": "poimandres",
 	"workbench.preferredLightColorTheme": "Atom One Light",
+	"workbench.preferredDarkColorTheme": "poimandres",
 	"[makefile]": {
 		"editor.insertSpaces": false,
 		"editor.detectIndentation": true
 	},
 	"vim.autoindent": false,
-	"gitlens.hovers.currentLine.over": "line",
 	"extensions.ignoreRecommendations": true,
 	"editor.suggest.snippetsPreventQuickSuggestions": false,
 	"editor.tabSize": 2,
@@ -48,9 +47,6 @@
 	"editor.renderWhitespace": "none",
 	"window.commandCenter": false,
 	"window.title": "${activeRepositoryName}${separator}${activeRepositoryBranchName}${separator}${activeEditorShort}",
-	"yaml.schemas": {
-		"file:///Users/v.sharov/.vscode/extensions/docsmsft.docs-yaml-1.0.1/dist/toc.schema.json": "/toc\\.yml/i"
-	},
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"workbench.colorCustomizations": {
     "editorGutter.modifiedBackground": "#b839b0", // Color for modified lines
@@ -60,25 +56,27 @@
 	"[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
 	"terminal.integrated.env.osx": {},
 	"editor.stickyScroll.enabled": false,
-	"gitlens.codeLens.enabled": false,
-	"gitlens.statusBar.enabled": false,
-	"gitlens.mode.active": "review",
 	"editor.formatOnSave": true,
-	"redhat.telemetry.enabled": false,
 	"diffEditor.ignoreTrimWhitespace": false,
 	"[rust]": {
 		"editor.defaultFormatter": "rust-lang.rust-analyzer"
 	},
-	"[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter"
-  },
 	"[markdown]": {
     "editor.formatOnSave": false,
   },
 	"editor.inlayHints.enabled": "offUnlessPressed",
 	"terminal.integrated.fontSize": 12,
-	"scm.showHistoryGraph": false,
-	"scm.showIncomingChanges": "never",
-	"scm.showOutgoingChanges": "never",
-	"git.openRepositoryInParentFolders": "never"
+	"git.openRepositoryInParentFolders": "never",
+	"python.createEnvironment.trigger": "off",
+	"ruff.nativeServer": "on",
+	"chat.disableAIFeatures": true,
+	"workbench.browser.openLocalhostLinks": false,
+	"terminal.integrated.stickyScroll.enabled": false,
+"rust-analyzer.cargo.extraEnv": {
+    "RUSTFLAGS": "",
+    "PATH": "/opt/homebrew/opt/llvm@21/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+    "CC": "/opt/homebrew/opt/llvm@21/bin/clang",
+    "CXX": "/opt/homebrew/opt/llvm@21/bin/clang++",
+    "SDKROOT": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk"
+  }
 }

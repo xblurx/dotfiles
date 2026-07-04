@@ -1,9 +1,7 @@
 local M = {}
 
-M.ui = { theme = "everforest_light" }
-
 M.base46 = {
-  theme = "everforest_light",
+  theme = "oxocarbon",
   theme_toggle = { "everforest_light", "oxocarbon" },
   changed_themes = {
     oxocarbon = {
@@ -38,8 +36,12 @@ M.ui = {
     pkgs = {
       "tailwindcss-language-server",
       "typescript-language-server",
+      "eslint-lsp",
       "eslint_d",
       "prettierd",
+      "ruff",
+      "html-lsp",
+      "rust-analyzer",
     },
   },
 }

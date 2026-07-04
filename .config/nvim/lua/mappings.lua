@@ -13,7 +13,9 @@ end
 map("n", "<leader>ss", ":SaveSession<Return>")
 map("n", "<leader>os", ":OpenSession<Return>")
 map("n", "<leader>ma", ":MasonInstallAll<Return>")
-
+map("n", "<leader>rn", function()
+  vim.lsp.buf.rename()
+end, { desc = "Rename Symbol" })
 vim.keymap.set("n", "<leader>x", safe_close_buffer, { silent = true })
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")

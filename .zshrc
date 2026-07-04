@@ -123,3 +123,7 @@ export AR=/opt/homebrew/opt/llvm/bin/llvm-ar
 export LC_ALL=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 
+
+. "$HOME/.local/bin/env"
+eval "$(uv generate-shell-completion zsh)"
+eval "$(uvx --generate-shell-completion zsh)"

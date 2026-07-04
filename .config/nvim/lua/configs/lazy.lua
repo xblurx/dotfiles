@@ -2,6 +2,8 @@ return {
   defaults = { lazy = true },
   install = { colorscheme = { "nvchad" } },
 
+  rocks = { enabled = false },
+
   ui = {
     icons = {
       ft = "",
@@ -35,12 +37,10 @@ return {
         "zipPlugin",
         "tutor",
         "rplugin",
-        "syntax",
         "synmenu",
         "optwin",
         "compiler",
         "bugreport",
-        "ftplugin",
       },
     },
   },

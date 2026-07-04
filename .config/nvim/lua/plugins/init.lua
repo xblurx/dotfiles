@@ -1,14 +1,7 @@
-local function set_theme(name)
-  local old_theme = name == "everforest_light" and "oxocarbon" or "everforest_light"
-
-  require("nvchad.utils").replace_word('theme = "' .. old_theme, 'theme = "' .. name)
-  require("base64").load_all_highlights()
-end
-
 return {
   {
     "stevearc/conform.nvim",
-    event = "BufWritePre", -- uncomment for format on save
+    event = "BufWritePre",
     opts = require "configs.conform",
   },
 
@@ -62,6 +55,7 @@ return {
         "javascript",
         "typescript",
         "tsx",
+        "python",
       }
       return cfg
     end,
@@ -69,36 +63,45 @@ return {
 
   {
     "mfussenegger/nvim-lint",
+    event = { "BufReadPost", "BufWritePost", "InsertLeave" },
     config = function()
-      require("lint").linters_by_ft = {
+      local lint = require "lint"
+
+      lint.linters_by_ft = {
         javascript = { "eslint_d" },
         typescript = { "eslint_d" },
         javascriptreact = { "eslint_d" },
         typescriptreact = { "eslint_d" },
       }
 
-      vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
-        callback = function()
-          require("lint").try_lint()
-        end,
-      })
-      vim.api.nvim_create_augroup("EslintFixAll", { clear = true })
+      local group = vim.api.nvim_create_augroup("nvim-lint", { clear = true })
 
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        group = "EslintFixAll",
-        command = "EslintFixAll",
+      vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {
+        group = group,
+        callback = function(args)
+          if vim.bo[args.buf].buftype == "" then
+            lint.try_lint()
+          end
+        end,
       })
     end,
   },
 
   {
     "williamboman/mason.nvim",
-    opts = {},
+    opts = {
+      ensure_installed = {
+        "mypy",
+        "ruff",
+        "pyright",
+      },
+    },
   },
 
   {
     "saecki/crates.nvim",
     ft = { "toml" },
+    dependencies = { "hrsh7th/nvim-cmp" },
     config = function()
       require("crates").setup {
         completion = {
@@ -118,40 +121,8 @@ return {
     opts = function(_, conf)
       conf.completion = {
         autocomplete = false,
-        completeopt = "menu,menuone,notebookSelector",
+        completeopt = "menu,menuone,noinsert",
       }
-
-      conf.window = {
-        completion = { autocomplete = false },
-      }
-
-      conf.buffer = {
-        completion = { autocomplete = false },
-        window = {
-          completion = { autocomplete = false },
-        },
-      }
-
-      -- require("cmp").setup {
-      --   completion = { autocomplete = false },
-      --   window = {
-      --     completion = { autocomplete = false },
-      --     documentation = {
-      --       border = border "CmpDocBorder",
-      --       winhighlight = "Normal:CmpDoc",
-      --     },
-      --   },
-      --   buffer = {
-      --     completion = { autocomplete = false },
-      --     window = {
-      --       completion = { autocomplete = false },
-      --       documentation = {
-      --         border = border "CmpDocBorder",
-      --         winhighlight = "Normal:CmpDoc",
-      --       },
-      --     },
-      --   },
-      -- }
 
       return conf
     end,
@@ -166,19 +137,35 @@ return {
   },
 
   {
-    event = "VeryLazy",
     "f-person/auto-dark-mode.nvim",
-    opts = {
-      update_interval = 5000,
-      set_dark_mode = function()
-        -- require("base46").toggle_theme()
-        set_theme "oxocarbon"
-      end,
-      set_light_mode = function()
-        -- require("base46").toggle_theme()
-        set_theme "everforest_light"
-      end,
-    },
+    event = "VeryLazy",
+    config = function()
+      local function set_nvchad_theme(theme, background)
+        local nvconfig = require "nvconfig"
+
+        if nvconfig.base46.theme == theme then
+          return
+        end
+
+        vim.o.background = background
+        nvconfig.base46.theme = theme
+        require("base46").load_all_highlights()
+        vim.cmd "redrawstatus"
+      end
+
+      require("auto-dark-mode").setup {
+        update_interval = 3000,
+        fallback = "dark",
+        set_dark_mode = function()
+          set_nvchad_theme("oxocarbon", "dark")
+        end,
+        set_light_mode = function()
+          set_nvchad_theme("everforest_light", "light")
+        end,
+      }
+
+      require("auto-dark-mode").init()
+    end,
   },
 
   {
