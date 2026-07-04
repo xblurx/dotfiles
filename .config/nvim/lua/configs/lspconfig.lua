@@ -1,42 +1,53 @@
-local nvlsp = require "nvchad.configs.lspconfig"
-local lspconfig = require "lspconfig"
+require("nvchad.configs.lspconfig").defaults()
 
-local function on_attach(client, bufnr)
-  nvlsp.on_attach(client, bufnr)
+vim.lsp.config("html", {
+  cmd = { "vscode-html-language-server", "--stdio" },
+  filetypes = { "html" },
+  root_markers = { "package.json", ".git" },
+})
 
-  local opts = { buffer = bufnr, remap = false, silent = true }
+vim.lsp.config("tailwindcss", {
+  cmd = { "tailwindcss-language-server", "--stdio" },
+  filetypes = {
+    "html",
+    "css",
+    "scss",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+  },
+  root_markers = {
+    "tailwind.config.js",
+    "tailwind.config.cjs",
+    "tailwind.config.mjs",
+    "tailwind.config.ts",
+    "postcss.config.js",
+    "package.json",
+    ".git",
+  },
+})
 
-  vim.keymap.set("n", "<leader>dv", vim.diagnostic.open_float, opts)
-  vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-  vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-  vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, opts)
-  vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts)
-end
+vim.lsp.config("ts_ls", {
+  cmd = { "typescript-language-server", "--stdio" },
+  filetypes = {
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+  },
+  root_markers = {
+    "tsconfig.json",
+    "jsconfig.json",
+    "package.json",
+    ".git",
+  },
+})
 
-local capabilities = nvlsp.capabilities
-
-local default_servers = { "html", "tailwindcss", "eslint" }
-
-for _, server in ipairs(default_servers) do
-  lspconfig[server].setup {
-    on_attach = on_attach,
-    on_init = nvlsp.on_init,
-    capabilities = capabilities,
-  }
-end
-
-lspconfig.ts_ls.setup {
-  on_attach = on_attach,
-  on_init = nvlsp.on_init,
-  capabilities = capabilities,
-}
-
-lspconfig.rust_analyzer.setup {
-  on_attach = on_attach,
-  on_init = nvlsp.on_init,
-  capabilities = capabilities,
+vim.lsp.config("rust_analyzer", {
+  cmd = { "rust-analyzer" },
   filetypes = { "rust" },
-  root_dir = lspconfig.util.root_pattern "Cargo.toml",
+  root_markers = { "Cargo.toml", ".git" },
   settings = {
     ["rust-analyzer"] = {
       cargo = {
@@ -44,18 +55,64 @@ lspconfig.rust_analyzer.setup {
       },
     },
   },
-}
+})
 
-lspconfig.ruff.setup {
-  on_attach = function(client, bufnr)
+vim.lsp.config("ty", {
+  cmd = { "ty", "server" },
+  filetypes = { "python" },
+  root_markers = {
+    "ty.toml",
+    "pyproject.toml",
+    "uv.lock",
+    "setup.py",
+    "setup.cfg",
+    "requirements.txt",
+    ".git",
+  },
+})
+
+vim.lsp.config("ruff", {
+  cmd = { "ruff", "server" },
+  filetypes = { "python" },
+  root_markers = {
+    "pyproject.toml",
+    "ruff.toml",
+    ".ruff.toml",
+    "uv.lock",
+    ".git",
+  },
+  on_attach = function(client, _)
     client.server_capabilities.hoverProvider = false
-    on_attach(client, bufnr)
   end,
-  on_init = nvlsp.on_init,
-  capabilities = capabilities,
   init_options = {
     settings = {
       logLevel = "info",
     },
   },
+})
+
+vim.lsp.config("oxlint", {
+  cmd = { "npx", "--no-install", "oxlint", "--lsp" },
+  filetypes = {
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+  },
+  root_markers = {
+    "oxlint.config.ts",
+    ".oxlintrc.json",
+    "package.json",
+    ".git",
+  },
+})
+
+vim.lsp.enable {
+  "html",
+  "tailwindcss",
+  "ts_ls",
+  "rust_analyzer",
+  "ty",
+  "ruff",
+  "oxlint",
 }

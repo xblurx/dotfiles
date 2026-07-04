@@ -1,24 +1,28 @@
 local options = {
   formatters_by_ft = {
     lua = { "stylua" },
-    javascript = { "prettierd" },
-    typescript = { "prettierd" },
-    javascriptreact = { "prettierd" },
-    typescriptreact = { "prettierd" },
+
+    javascript = { "oxlint", "oxfmt" },
+    javascriptreact = { "oxlint", "oxfmt" },
+    typescript = { "oxlint", "oxfmt" },
+    typescriptreact = { "oxlint", "oxfmt" },
+
+    json = { "oxfmt" },
+    jsonc = { "oxfmt" },
+    css = { "oxfmt" },
+    scss = { "oxfmt" },
+    html = { "oxfmt" },
+
     python = {
-      -- To fix auto-fixable lint errors.
       "ruff_fix",
-      -- To run the Ruff formatter.
-      "ruff_format",
-      -- To organize the imports.
       "ruff_organize_imports",
+      "ruff_format",
     },
   },
 
   format_on_save = {
-    -- These options will be passed to conform.format()
     timeout_ms = 2500,
-    lsp_fallback = true,
+    lsp_format = "fallback",
   },
 }
 

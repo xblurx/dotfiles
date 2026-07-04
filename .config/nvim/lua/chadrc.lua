@@ -3,6 +3,7 @@ local M = {}
 M.base46 = {
   theme = "oxocarbon",
   theme_toggle = { "everforest_light", "oxocarbon" },
+
   changed_themes = {
     oxocarbon = {
       base_16 = {
@@ -23,6 +24,7 @@ M.base46 = {
         base0E = "#be95ff",
         base0F = "#82cfff",
       },
+
       base_30 = {
         green = "#ffffff",
       },
@@ -30,19 +32,14 @@ M.base46 = {
   },
 }
 
-M.ui = {
-  mason = {
-    cmd = true,
-    pkgs = {
-      "tailwindcss-language-server",
-      "typescript-language-server",
-      "eslint-lsp",
-      "eslint_d",
-      "prettierd",
-      "ruff",
-      "html-lsp",
-      "rust-analyzer",
-    },
+M.mason = {
+  cmd = true,
+  pkgs = {
+    "tailwindcss-language-server",
+    "typescript-language-server",
+    "stylua",
+    "html-lsp",
+    "rust-analyzer",
   },
 }
 

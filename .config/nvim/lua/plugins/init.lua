@@ -2,6 +2,7 @@ return {
   {
     "stevearc/conform.nvim",
     event = "BufWritePre",
+    cmd = { "ConformInfo" },
     opts = require "configs.conform",
   },
 
@@ -35,6 +36,7 @@ return {
 
   {
     "neovim/nvim-lspconfig",
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
       require "configs.lspconfig"
     end,
@@ -42,6 +44,17 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter",
+    cmd = {
+      "TSInstall",
+      "TSInstallSync",
+      "TSUpdate",
+      "TSUpdateSync",
+      "TSUninstall",
+      "TSBufEnable",
+      "TSBufDisable",
+      "TSModuleInfo",
+    },
+    event = { "BufReadPost", "BufNewFile" },
     opts = function()
       local cfg = require "nvchad.configs.treesitter"
       cfg.ensure_installed = {
@@ -59,43 +72,6 @@ return {
       }
       return cfg
     end,
-  },
-
-  {
-    "mfussenegger/nvim-lint",
-    event = { "BufReadPost", "BufWritePost", "InsertLeave" },
-    config = function()
-      local lint = require "lint"
-
-      lint.linters_by_ft = {
-        javascript = { "eslint_d" },
-        typescript = { "eslint_d" },
-        javascriptreact = { "eslint_d" },
-        typescriptreact = { "eslint_d" },
-      }
-
-      local group = vim.api.nvim_create_augroup("nvim-lint", { clear = true })
-
-      vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {
-        group = group,
-        callback = function(args)
-          if vim.bo[args.buf].buftype == "" then
-            lint.try_lint()
-          end
-        end,
-      })
-    end,
-  },
-
-  {
-    "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "mypy",
-        "ruff",
-        "pyright",
-      },
-    },
   },
 
   {
