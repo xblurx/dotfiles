@@ -77,17 +77,22 @@ return {
   {
     "saecki/crates.nvim",
     ft = { "toml" },
-    dependencies = { "hrsh7th/nvim-cmp" },
     config = function()
       require("crates").setup {
+        lsp = {
+          enabled = true,
+          actions = true,
+          completion = true,
+          hover = true,
+        },
+
         completion = {
-          cmp = {
+          crates = {
             enabled = true,
+            max_results = 8,
+            min_chars = 3,
           },
         },
-      }
-      require("cmp").setup.buffer {
-        sources = { { name = "crates" } },
       }
     end,
   },
