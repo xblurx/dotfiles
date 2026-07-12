@@ -19,3 +19,16 @@ end, { desc = "Rename Symbol" })
 vim.keymap.set("n", "<leader>x", safe_close_buffer, { silent = true })
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
+
+map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", {
+  desc = "NvimTree toggle",
+  silent = true,
+})
+map("n", "<leader>gb", ":Gitsigns preview_hunk<CR>", {
+  desc = "Git toggle line blame",
+  silent = true,
+})
+map("n", "<leader>gt", ":Gitsigns toggle_current_line_blame<CR>", {
+  desc = "Git toggle line blame",
+  silent = true,
+})

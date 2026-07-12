@@ -7,23 +7,9 @@ return {
   },
 
   {
-    "nvchad/ui",
-    config = function()
-      require "nvchad"
-    end,
-  },
-
-  {
-    "nvchad/base46",
-    lazy = true,
-    build = function()
-      require("base46").load_all_highlights()
-    end,
-  },
-
-  {
     "windwp/nvim-ts-autotag",
     ft = {
+      "html",
       "javascript",
       "javascriptreact",
       "typescript",
@@ -60,6 +46,7 @@ return {
       cfg.ensure_installed = {
         "vim",
         "lua",
+        "html",
         "css",
         "gitignore",
         "http",
@@ -110,14 +97,6 @@ return {
   },
 
   {
-    "rust-lang/rust.vim",
-    ft = "rust",
-    init = function()
-      vim.g.rustfmt_autosave = 1
-    end,
-  },
-
-  {
     "f-person/auto-dark-mode.nvim",
     event = "VeryLazy",
     config = function()
@@ -144,8 +123,6 @@ return {
           set_nvchad_theme("everforest_light", "light")
         end,
       }
-
-      require("auto-dark-mode").init()
     end,
   },
 

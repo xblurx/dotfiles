@@ -1,7 +1,7 @@
 local M = {}
 
 M.base46 = {
-  theme = "oxocarbon",
+  theme = "everforest_light",
   theme_toggle = { "everforest_light", "oxocarbon" },
 
   changed_themes = {
@@ -40,6 +40,8 @@ M.mason = {
     "stylua",
     "html-lsp",
     "rust-analyzer",
+    "ty",
+    "ruff",
   },
 }
 

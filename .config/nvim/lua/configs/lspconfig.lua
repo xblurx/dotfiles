@@ -91,28 +91,12 @@ vim.lsp.config("ruff", {
   },
 })
 
-vim.lsp.config("oxlint", {
-  cmd = { "npx", "--no-install", "oxlint", "--lsp" },
-  filetypes = {
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-  },
-  root_markers = {
-    "oxlint.config.ts",
-    ".oxlintrc.json",
-    "package.json",
-    ".git",
-  },
-})
-
 vim.lsp.enable {
   "html",
   "tailwindcss",
   "ts_ls",
+  "oxlint",
   "rust_analyzer",
   "ty",
   "ruff",
-  "oxlint",
 }
