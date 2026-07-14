@@ -1,7 +1,7 @@
 local M = {}
 
 M.base46 = {
-  theme = "everforest_light",
+  theme = "oxocarbon",
   theme_toggle = { "everforest_light", "oxocarbon" },
 
   changed_themes = {

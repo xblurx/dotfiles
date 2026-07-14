@@ -127,6 +127,27 @@ return {
   },
 
   {
+    "sphamba/smear-cursor.nvim",
+    lazy = false,
+    opts = {
+      smear_between_buffers = false,
+      smear_between_neighbor_lines = true,
+      scroll_buffer_space = true,
+      smear_insert_mode = true,
+
+      cursor_color = "#ff7eb6",
+      particles_enabled = true,
+      particle_max_num = 200,
+      stiffness = 0.8,
+      trailing_stiffness = 0.6,
+      trailing_exponent = 5,
+      damping = 0.95,
+      distance_stop_animating = 0.5,
+      gradient_exponent = 0,
+    },
+  },
+
+  {
     lazy = false,
     "superDross/ticket.vim",
   },
