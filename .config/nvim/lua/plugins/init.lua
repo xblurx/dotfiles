@@ -148,6 +148,30 @@ return {
   },
 
   {
+    "nvim-tree/nvim-tree.lua",
+    opts = {
+      filters = {
+        dotfiles = false, -- show .files and .directories
+      },
+      git = {
+        ignore = false, -- show gitignored files/directories
+      },
+    },
+  },
+
+  {
+    "kdheepak/lazygit.nvim",
+    cmd = {
+      "LazyGit",
+      "LazyGitConfig",
+      "LazyGitCurrentFile",
+      "LazyGitFilter",
+      "LazyGitFilterCurrentFile",
+    },
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
+
+  {
     lazy = false,
     "superDross/ticket.vim",
   },

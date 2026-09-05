@@ -100,3 +100,37 @@ vim.lsp.enable {
   "ty",
   "ruff",
 }
+
+vim.api.nvim_create_autocmd("CursorHold", {
+  callback = function()
+    vim.diagnostic.open_float(nil, {
+      focus = false,
+      scope = "cursor",
+    })
+  end,
+})
+
+vim.diagnostic.config {
+  virtual_text = {
+    prefix = "●",
+    spacing = 2,
+  },
+  signs = true,
+  underline = true,
+  severity_sort = true,
+  float = {
+    border = "rounded",
+    source = "always",
+  },
+}
+
+vim.o.updatetime = 250
+
+vim.api.nvim_create_autocmd("CursorHold", {
+  callback = function()
+    vim.diagnostic.open_float(nil, {
+      focus = false,
+      scope = "cursor",
+    })
+  end,
+})

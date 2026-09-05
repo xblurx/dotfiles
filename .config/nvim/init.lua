@@ -1,4 +1,5 @@
 vim.g.mapleader = " "
+vim.g.vscode_snippets_path = vim.fn.stdpath "config" .. "/snippets"
 
 -- bootstrap lazy and all plugins
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
